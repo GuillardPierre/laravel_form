@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Gift;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,6 +21,13 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+        ]);
+
+        Gift::factory()->create([
+            'name' => 'Cadeau 1',
+            'url' => 'https://example.com/cadeau1',
+            'details' => 'Détails du cadeau 1',
+            'price' => 5.0,
         ]);
     }
 }

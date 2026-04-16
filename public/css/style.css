@@ -1,0 +1,25 @@
+.page {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.list {
+    display: grid;
+    gap: 16px;
+}
+
+.gift {
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 16px 18px;
+}
+
+.gift h2 {
+    margin: 0 0 6px;
+    font-size: 1.1rem;
+}
+
+.price {
+    margin: 0;
+    font-weight: 700;
+}
