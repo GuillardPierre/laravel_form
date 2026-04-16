@@ -22,7 +22,7 @@ class GiftController extends Controller
     {
         $validated = $request->validated();
         $gift = Gift::create($validated);
-        return redirect('/cadeau/' . $gift->id);
+        return redirect()->route('gifts.show', $gift);
     }
 
     public function show(Gift $gift)
@@ -32,26 +32,19 @@ class GiftController extends Controller
 
     public function edit(Gift $gift)
     {
-        return response()->json([
-            'data' => $gift,
-        ]);
+        return view('edit', compact('gift'));
     }
 
     public function update(StoreGiftRequest $request, Gift $gift)
     {
         $validated = $request->validated();
         $gift->update($validated);
-        return response()->json([
-            'message' => 'Cadeau mis à jour avec succès.',
-            'data' => $gift,
-        ]);
+        return redirect()->route('gifts.show', $gift);
     }
 
     public function destroy(Gift $gift)
     {
         $gift->delete();
-        return response()->json([
-            'message' => 'Cadeau supprimé avec succès.',
-        ]);
+        return redirect()->route('gifts.index');
     }
 }

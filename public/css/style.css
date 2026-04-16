@@ -38,3 +38,15 @@
 .errors {
     border: 1px solid red;
 }
+
+.gift-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.field-error {
+    color: red;
+    margin: 0;
+    font-size: 10px;
+}

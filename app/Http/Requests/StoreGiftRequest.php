@@ -23,9 +23,9 @@ class StoreGiftRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:3|max:50',
-            'url' => 'nullable|string|regex:/^https?:\/\/.+/i',
+            'url' => 'nullable|url:http,https',
             'details' => 'nullable|string',
-            'price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'price' => 'required|decimal:0,2',
         ];
     }
 
@@ -38,10 +38,9 @@ class StoreGiftRequest extends FormRequest
             'name.required' => 'Le champ nom est obligatoire.',
             'name.min' => 'Le nom doit contenir au minimum 3 caractères.',
             'name.max' => 'Le nom ne peut pas dépasser 50 caractères.',
-            'url.regex' => 'L\'URL doit commencer par http:// ou https://.',
+            'url.url' => 'L\'URL doit commencer par http:// ou https://.',
             'price.required' => 'Le champ prix est obligatoire.',
-            'price.numeric' => 'Le prix doit être un nombre décimal.',
-            'price.regex' => 'Le prix ne peut avoir que 2 chiffres au maximum après la virgule.',
+            'price.decimal' => 'Le prix doit être un nombre avec 2 chiffres maximum après le point.',
         ];
     }
 }

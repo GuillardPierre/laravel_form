@@ -1,28 +1,24 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ $gift->name }}</title>
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    </head>
-    <body>
-        <main class="page">
-            <a href="/">← Retour</a>
+@extends('layouts.app')
 
-            <article class="gift-detail">
-                <h1>{{ $gift->name }}</h1>
-                <p class="price">Prix : {{ $gift->price }} €</p>
+@section('title', $gift->name)
 
-                @if ($gift->url)
-                    <p>Lien : <a href="{{ $gift->url }}" target="_blank">{{ $gift->url }}</a></p>
-                @endif
+@section('content')
+    <main class="page">
+        <a href="{{ route('gifts.index') }}">← Retour</a>
+        <p><a href="{{ route('gifts.edit', $gift) }}">Modifier ce cadeau</a></p>
 
-                @if ($gift->details)
-                    <p><strong>Détails :</strong></p>
-                    <p>{{ $gift->details }}</p>
-                @endif
-            </article>
-        </main>
-    </body>
-</html>
+        <article class="gift-detail">
+            <h1>{{ $gift->name }}</h1>
+            <p class="price">Prix : {{ $gift->price }} €</p>
+
+            @if ($gift->url)
+                <p>Lien : <a href="{{ $gift->url }}" target="_blank">{{ $gift->url }}</a></p>
+            @endif
+
+            @if ($gift->details)
+                <p><strong>Détails :</strong></p>
+                <p>{{ $gift->details }}</p>
+            @endif
+        </article>
+    </main>
+@endsection

@@ -1,44 +1,41 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Créer un cadeau</title>
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    </head>
-    <body>
-        <main class="page">
-            <a href="/">← Retour</a>
+@extends('layouts.app')
 
-            <h1>Créer un cadeau</h1>
+@section('title', 'Créer un cadeau')
 
-            @if ($errors->any())
-                <div class="errors">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+@section('content')
+    <main class="page">
+        <a href="{{ route('gifts.index') }}">← Retour</a>
 
-            <form action="/cadeau" method="POST" class="gift-form">
-                @csrf
+        <h1>Créer un cadeau</h1>
 
-                <label for="name">Nom</label>
-                <input type="text" id="name" name="name" value="{{ old('name') }}" required>
+        <form action="{{ route('gifts.store') }}" method="POST" class="gift-form">
+            @csrf
 
-                <label for="price">Prix</label>
-                <input type="text" id="price" name="price" value="{{ old('price') }}" required>
+            <label for="name">Nom</label>
+            <input type="text" id="name" name="name" value="{{ old('name') }}" required>
+            @error('name')
+                <p class="field-error">{{ $message }}</p>
+            @enderror
 
-                <label for="url">URL</label>
-                <input type="text" id="url" name="url" value="{{ old('url') }}">
+            <label for="price">Prix</label>
+            <input type="text" id="price" name="price" value="{{ old('price') }}" required>
+            @error('price')
+                <p class="field-error">{{ $message }}</p>
+            @enderror
 
-                <label for="details">Détails</label>
-                <textarea id="details" name="details" rows="5">{{ old('details') }}</textarea>
+            <label for="url">URL</label>
+            <input type="text" id="url" name="url" value="{{ old('url') }}">
+            @error('url')
+                <p class="field-error">{{ $message }}</p>
+            @enderror
 
-                <button type="submit">Créer</button>
-            </form>
-        </main>
-    </body>
-</html>
+            <label for="details">Détails</label>
+            <textarea id="details" name="details" rows="5">{{ old('details') }}</textarea>
+            @error('details')
+                <p class="field-error">{{ $message }}</p>
+            @enderror
+
+            <button type="submit">Créer</button>
+        </form>
+    </main>
+@endsection
