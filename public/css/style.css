@@ -23,3 +23,9 @@
     margin: 0;
     font-weight: 700;
 }
+
+.gift-detail {
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 16px 18px;
+}

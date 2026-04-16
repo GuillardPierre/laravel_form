@@ -12,10 +12,12 @@
 
             <section class="list">
                 @forelse ($gifts as $gift)
-                    <article class="gift">
-                        <h2>{{ $gift->name }}</h2>
-                        <p class="price">Prix : {{ number_format($gift->price, 2, ',', ' ') }} €</p>
-                    </article>
+                    <a href="/cadeau/{{ $gift->id }}">
+                        <article class="gift">
+                            <h2>{{ $gift->name }}</h2>
+                            <p class="price">Prix : {{ number_format($gift->price, 2, ',', ' ') }} €</p>
+                        </article>
+                    </a>
                 @empty
                     <div >Aucun gift à afficher.</div>
                 @endforelse

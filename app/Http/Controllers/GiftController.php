@@ -30,9 +30,7 @@ class GiftController extends Controller
 
     public function show(Gift $gift)
     {
-        return response()->json([
-            'data' => $gift,
-        ]);
+        return view('show', compact('gift'));
     }
 
     public function edit(Gift $gift)
