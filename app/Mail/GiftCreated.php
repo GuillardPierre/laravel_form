@@ -13,9 +13,11 @@ class GiftCreated extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public string $name, public string $price)
+    public function __construct(
+        protected string $name,
+        protected string $price,
+    )
     {
-        //
     }
 
     /**
@@ -48,9 +50,9 @@ class GiftCreated extends Mailable
     public function attachments(): array
     {
         return [
-            Attachment::fromPath(public_path('images/gift.png'))
-                ->as('gift.png')
-                ->withMime('image/png'),
+            Attachment::fromPath(public_path('images/gift.jpg'))
+                ->as('gift.jpg')
+                ->withMime('image/jpeg'),
         ];
     }
 }
