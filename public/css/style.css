@@ -29,3 +29,12 @@
     border-radius: 12px;
     padding: 16px 18px;
 }
+
+.gift-form {
+    display: grid;
+    gap: 5px;
+}
+
+.errors {
+    border: 1px solid red;
+}

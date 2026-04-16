@@ -9,6 +9,7 @@
     <body>
         <main class="page">
             <h1>Liste cadeaux</h1>
+            <p><a href="/cadeau/create">Ajouter un cadeau</a></p>
 
             <section class="list">
                 @forelse ($gifts as $gift)

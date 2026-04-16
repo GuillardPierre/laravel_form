@@ -13,19 +13,16 @@ class GiftController extends Controller
         return view('welcome', compact('gifts'));
     }
 
-    public function create() {}
+    public function create()
+    {
+        return view('create');
+    }
 
     public function store(StoreGiftRequest $request)
     {
         $validated = $request->validated();
         $gift = Gift::create($validated);
-        return response()->json(
-            [
-                'message' => 'Cadeau créé avec succès.',
-                'data' => $gift,
-            ],
-            201,
-        );
+        return redirect('/cadeau/' . $gift->id);
     }
 
     public function show(Gift $gift)
